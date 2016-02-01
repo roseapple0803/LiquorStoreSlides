@@ -1,0 +1,16 @@
+
+/* do not put <style> </style> here unless they are in .rmd file */
+
+.reveal h3 {
+    color: #ffff11;
+    text-align: left;
+    padding-bottom: 10px;
+    font-family: Impact, sans-serif;
+}
+
+/*
+.title-slide {
+  background-color: #e1e6f0;
+  
+  /* background-image:url(http://goo.gl/EpXln); */
+}

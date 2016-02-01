@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to BC Liquor Store</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Welcome to BC Liquor Store">
+  <meta name="author" content="Jennifer Yueh">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/default.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/rNVD3.css"></link>
+<link rel=stylesheet href="./assets/css/proj3.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  <script src="libraries/widgets/nvd3/js/jquery-1.8.2.min.js"></script>
+<script src="libraries/widgets/nvd3/js/d3.v3.min.js"></script>
+<script src="libraries/widgets/nvd3/js/nv.d3.min-new.js"></script>
+<script src="libraries/widgets/nvd3/js/fisheye.js"></script>
+
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Welcome to BC Liquor Store</h1>
+    <h2>Developing Data Product Project</h2>
+    <p>Jennifer Yueh<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+  bgclass {
+    background-color: #ffff11;
+  }
+
+  table.mytable {
+    border: 3px solid #7B8273;
+    width: 100%;
+    /* border-collapse: collapse; *
+    font-size: 9px;
+    line-height: 50px;
+    font-family: 'Trebuchet MS';
+    font-weight: bolder;
+    color: red;
+  }
+  table.mytable td {
+    font-size: 8px;
+  }
+
+</style>
+
+<h2><h1 style="text-align:center;font-weight:bold">Introduction</h1></h2>
+
+<p><br>
+<br>
+This shiny application aims to help you get a quick glimpse of your <b>product inventory</b> through the power of Shiny&#39;s automatic UI updates. </p>
+
+<p><br>
+It has two main features:</p>
+
+<ul>
+<li><b>User friendly input controls </b></li>
+<li><b>Instant and reative output</b></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2><h1 style="text-align:center;font-weight:bold">Input Controls</h1></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br></p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <h3>You decide where to look by ...</h3>
+
+<ul>
+<li>Setting price range by moving the slider or </li>
+<li>Picking product type: WINE, BEER, SPIRITS or REFRESHMENT</li>
+<li>Selecting country of origin from the drop down list</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h3>Our app searches through the data ...</h3>
+
+<!-- html table generated in R 3.2.2 by xtable 1.8-0 package -->
+
+<!-- Sun Jan 31 17:28:40 2016 -->
+
+<table class:mytable>
+<tr> <th>  </th> <th> Type </th> <th> Subtype </th> <th> Name </th>  </tr>
+  <tr> <td align="right"> 1 </td> <td> WINE </td> <td> TABLE WINE RED </td> <td> COPPER MOON - MALBEC </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> WINE </td> <td> TABLE WINE WHITE </td> <td> DOMAINE D'OR - DRY </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> WINE </td> <td> TABLE WINE RED </td> <td> SOMMET ROUGE </td> </tr>
+  <tr> <td align="right"> 4 </td> <td> WINE </td> <td> TABLE WINE WHITE </td> <td> MISSION RIDGE - PREMIUM DRY WHITE </td> </tr>
+  <tr> <td align="right"> 5 </td> <td> WINE </td> <td> TABLE WINE RED </td> <td> ZINFANDEL - BIG HOUSE CARDINAL ZIN </td> </tr>
+  <tr> <td align="right"> 6 </td> <td> WINE </td> <td> TABLE WINE RED </td> <td> LE VILLAGEOIS RED - CELLIERS LA SALLE </td> </tr>
+   </table>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2><h1 style="text-align:center;  font-weight:bold">Instant and reactive output</h1></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br></p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <h3>Notice how ...</h3>
+
+<ul>
+<li>All the related data are automatically re-evaluated and refreshed</li>
+<li>Simply click a tab such as Plot or Tally to see corresponding histogram and data display based on your search criteria</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <h3>An output plot</h3>
+
+<p><img src="assets/fig/alcohol_hist-1.png" alt="plot of chunk alcohol_hist"></p>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2><h1 style="text-align:center;font-weight:bold">And another Output</h1></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br>
+<br></p>
+
+<!-- html table generated in R 3.2.2 by xtable 1.8-0 package -->
+
+<!-- Sun Jan 31 18:23:06 2016 -->
+
+<table class="mytable">
+<tr> <th>  </th> <th> Type </th> <th> Name </th> <th> Alcohol_Content </th> <th> Price </th>  </tr>
+  <tr> <td align="right"> 1 </td> <td> WINE </td> <td> BABY DUCK </td> <td align="right"> 6.90 </td> <td align="right"> 6.97 </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> WINE </td> <td> BABY CANADIAN SPARKLING </td> <td align="right"> 6.90 </td> <td align="right"> 6.97 </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> WINE </td> <td> BABY DUCK </td> <td align="right"> 6.90 </td> <td align="right"> 13.00 </td> </tr>
+  <tr> <td align="right"> 4 </td> <td> WINE </td> <td> BABY CANADIAN SPARKLING </td> <td align="right"> 6.90 </td> <td align="right"> 13.00 </td> </tr>
+  <tr> <td align="right"> 5 </td> <td> WINE </td> <td> LA SCALA SPUMANTE </td> <td align="right"> 7.00 </td> <td align="right"> 6.97 </td> </tr>
+  <tr> <td align="right"> 6 </td> <td> WINE </td> <td> LA SCALA SPUMANTE </td> <td align="right"> 7.00 </td> <td align="right"> 13.00 </td> </tr>
+   </table>
+
+<p><br>
+To see more, go to <a href="https://github.com/roseapple0803/LiquorStore">https://github.com/roseapple0803/LiquorStore</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='<h1 style="text-align:center;font-weight:bold">Input Controls</h1>'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='<h1 style="text-align:center;  font-weight:bold">Instant and reactive output</h1>'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='<h1 style="text-align:center;font-weight:bold">And another Output</h1>'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="libraries/widgets/interactive/js/opencpu-0.5.js"></script>
+<script src="libraries/widgets/interactive/js/interactive.js"></script>
+
+  
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <script src="shared/shiny.js" type="text/javascript"></script>
+  <script src="shared/slider/js/jquery.slider.min.js"></script>
+  <script src="shared/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="shared/slider/css/jquery.slider.min.css"></link>
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

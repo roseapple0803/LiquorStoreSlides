@@ -1,0 +1,169 @@
+---
+title       : Welcome to BC Liquor Store 
+subtitle    : Developing Data Product Project
+author      : Jennifer Yueh
+job         : 
+logo        : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : default      # 
+widgets     : [mathjaz, quiz, bootstrap, shiny, interactive]           
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+ext_widgets: {rCharts: [libraries/nvd3]}
+--- 
+
+
+
+<style>
+  bgclass {
+    background-color: #ffff11;
+  }
+
+  table.mytable {
+    border: 3px solid #7B8273;
+    width: 100%;
+    /* border-collapse: collapse; *
+    font-size: 9px;
+    line-height: 50px;
+    font-family: 'Trebuchet MS';
+    font-weight: bolder;
+    color: red;
+  }
+  table.mytable td {
+    font-size: 8px;
+  }
+
+</style>
+
+
+
+
+
+
+
+```{r setup, include=FALSE}
+# set global chunk options
+library(slidify); library(xtable); library(knitr)
+opts_chunk$set(cache=FALSE)
+```
+
+
+
+
+## <h1 style="text-align:center;font-weight:bold">Introduction</h1> 
+<br>
+<br>
+This shiny application aims to help you get a quick glimpse of your <b>product inventory</b> through the power of Shiny's automatic UI updates. 
+
+<br>
+It has two main features:
+
+* <b>User friendly input controls </b>
+* <b>Instant and reative output</b>
+
+
+
+
+--- &twocol table.mytable
+
+
+## <h1 style="text-align:center;font-weight:bold">Input Controls</h1> 
+<br>
+
+*** =left
+### You decide where to look by ...
+
+* Setting price range by moving the slider or 
+* Picking product type: WINE, BEER, SPIRITS or REFRESHMENT
+* Selecting country of origin from the drop down list
+
+
+
+*** =right
+
+### Our app searches through the data ...
+```{r, results="asis", echo=FALSE}
+mydf <- readRDS("alcohol.rds")
+print(xtable(mydf[1:6, c(1,2,4)]), type="html", html.table.attributes='class:mytable')
+```
+
+
+
+--- &twocol 
+
+
+## <h1 style="text-align:center;  font-weight:bold">Instant and reactive output</h1> 
+<br>
+
+*** =left
+
+### Notice how ...
+* All the related data are automatically re-evaluated and refreshed
+* Simply click a tab such as Plot or Tally to see corresponding histogram and data display based on your search criteria
+
+
+*** =right
+### An output plot
+```{r alcohol_hist, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3, fig.width=6}
+library(dplyr)
+library(ggplot2)
+
+
+thedf <- mydf %>% filter(Price < 30, Price > 5, Type == "WINE", Country == "CANADA")
+
+thestart <- min(thedf$Alcohol_Content)
+theend <- max(thedf$Alcohol_Content)
+thestep <- ifelse((theend - thestart) >= 2, 2, 0.1)
+
+avgMsg <- paste("Average alcohol content within your search criteria is ", round(mean(thedf$Alcohol_Content),2))
+
+ggplot(thedf, aes(Alcohol_Content)) +
+    geom_histogram(fill="lightblue", colour ="slateblue4", bins=25) + 
+    
+    ggtitle("Histogram of Alcohol Content") + ylab("Count") +
+    theme(plot.title=element_text(size=rel(1.5),face="bold")) + 
+    
+    scale_x_continuous(breaks=seq(thestart, theend, thestep)) +
+    
+    theme(axis.text=element_text(size=12),
+          axis.title=element_text(size=14,face="bold")) +
+    geom_vline(xintercept= mean(thedf$Alcohol_Content), col="salmon", size=1) + 
+    annotate("text", x=-Inf, y=Inf, label=avgMsg, hjust=-.2, vjust=3, label=avgMsg)
+```
+
+
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.height=3, fig.width=6}
+df <- ddply(thedf, c("Country", "Type", "Subtype"), summarise, 
+                    AVG_PRICE=mean(Price, na.rm=TRUE), MIN_PRICE=min(Price, na.rm=TRUE), 
+                    MAX_PRICE=max(Price, na.rm=TRUE), AVG_ALCOHOL_CONTENT=mean(Alcohol_Content), TOTAL_LABELS=length(Price))
+
+ filtered <- df %>% select(Subtype, AVG_PRICE, MIN_PRICE, MAX_PRICE, AVG_ALCOHOL_CONTENT, TOTAL_LABELS)
+          
+          ggplot(data=filtered, aes(x=reorder(Subtype, TOTAL_LABELS), y=TOTAL_LABELS)) + 
+            geom_bar(stat = "identity", colour="slateblue4", fill="lightblue", width=.7) + coord_flip() + 
+            xlab("Available Subtype") + ylab("Total Labels")
+```
+
+
+--- 
+
+
+## <h1 style="text-align:center;font-weight:bold">And another Output</h1> 
+<br>
+<br>
+
+
+```{r, results="asis", echo=FALSE}
+library(DT)
+
+filtered <- thedf %>% select(Type, Name, Alcohol_Content, Price) %>% arrange(Alcohol_Content) %>% head(6)
+
+print(xtable(filtered), type="html", html.table.attributes='class="mytable"')
+```
+
+<br>
+To see more, go to https://github.com/roseapple0803/LiquorStore
+
+
